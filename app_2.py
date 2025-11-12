@@ -14,7 +14,7 @@ import os
 from datetime import datetime
 
 
-SQLALCHEMY_DATABASE_URL = "xxx"
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:wLafwheTGYSDCIFGBzVTNzzdGJvNrerp@maglev.proxy.rlwy.net:49245/railway"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
 
