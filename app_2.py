@@ -13,8 +13,11 @@ import pytz
 import os
 from datetime import datetime
 
+#SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:wLafwheTGYSDCIFGBzVTNzzdGJvNrerp@maglev.proxy.rlwy.net:49245/railway"
 
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:wLafwheTGYSDCIFGBzVTNzzdGJvNrerp@maglev.proxy.rlwy.net:49245/railway"
+SQLALCHEMY_DATABASE_URL = os.environ["SQLALCHEMY_DATABASE_URL"]
+
+
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
 
@@ -137,7 +140,7 @@ async def predict_house(file: UploadFile = File(...), db: Session = Depends(get_
 
     lima_tz= pytz.timezone('America/Lima')
     now = datetime.now(lima_tz)
-
+    
     predictions_df = pd.DataFrame({
         'file_name': file.filename,
         'prediction': predictions,
